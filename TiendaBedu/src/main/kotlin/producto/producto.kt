@@ -1,0 +1,4 @@
+package producto
+
+class producto {
+}
