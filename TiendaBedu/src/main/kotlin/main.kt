@@ -1,6 +1,15 @@
+import menus.inicioSesion
+
 fun main() {
-    var opc: Int
+
     // Menu de la aplicación
+    inicioSesion()
+
+
+}
+
+fun menuPrincipa(){
+    var opc: Int
     do {
         println("1. Crear Producto")
         println("2. Crear Orden")
