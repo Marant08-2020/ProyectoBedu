@@ -65,7 +65,8 @@ fun iniciarSesion() {
         print("Constraseña:")
         val passwordUser =readln()
         // Funcion lambda
-        val loginUser = arregloUser.filter { User-> User.id == userId }
+        val loginUser = arregloUser.
+        filter { User-> User.id == userId }
         if (loginUser.isEmpty()){
             println("**El usuario no existe**")
         }else{
@@ -88,9 +89,9 @@ fun cambiarPassword(){
 
     }else{
         print("contraseña nueva:")
-        var nuevoPassword =readln()
+        val nuevoPassword =readln()
         print("Con firmar contraseña nueva:")
-        var confirmarPassword =readln()
+        val confirmarPassword =readln()
         if(nuevoPassword== confirmarPassword){
             // usa el set de la class data
             userAmodificar[0].password = nuevoPassword
