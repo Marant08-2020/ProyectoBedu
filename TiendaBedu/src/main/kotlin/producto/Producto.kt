@@ -29,7 +29,14 @@ abstract class Producto(var id: Int = 0,
     }
 
     open fun descontarStock(stock: Int): Int {
-        return stock.let { this@Producto.stock -= it; stock }
+        val difSctok:Int = this.stock - stock
+        if(difSctok>=0){
+            return stock.let { this@Producto.stock += it; stock }
+
+        }else{
+            throw Error("Existencia insuficiente inventario de:${this.stock}")
+        }
+
     }
 
     override fun toString(): String {

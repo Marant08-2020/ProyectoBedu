@@ -38,6 +38,8 @@ public class CalzadoRopa extends  Producto{
         System.out.println(zapato2.descripcionProducto());
         zapato2.aumetarStock(10);
         System.out.println(zapato2.descripcionProducto());
+        System.out.println(zapato3.descripcionProducto());
+        zapato3.descontarStock(30);
 
     }
 }
