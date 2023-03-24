@@ -4,6 +4,7 @@ abstract class Producto(var id: Int = 0,
                         var nommbre: String,
                         var descripcion: String,
                         var tipo: String,
+                        var modelo: String,
                         var precio: Float,
                         var stock: Int=0){
     // Variable estática
@@ -15,8 +16,6 @@ abstract class Producto(var id: Int = 0,
         contadorProducto += 1
 
     }
-
-
 
     // Asigana como id el caontador
     init {
@@ -33,5 +32,17 @@ abstract class Producto(var id: Int = 0,
         return stock.let { this@Producto.stock -= it; stock }
     }
 
+    override fun toString(): String {
+        return """
+           
+           Id del producto:${this.id}
+           Nombre del producto:${this.nommbre} 
+           Descripción del producto:${this.descripcion} 
+           Precio del producto:${this.precio} 
+           Modelo del producto:${this.modelo}
+           Tipo del producto:${this.tipo}
+           Stock del producto:${this.stock}
+        """.trimIndent()
+    }
 
 }
