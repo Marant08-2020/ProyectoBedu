@@ -5,18 +5,14 @@ public class CalzadoRopa extends  Producto{
     private static final int id = 0;
     protected String modelo;
     protected float talla;
-    protected String tipo;
 
-    protected int stock;
 
     public CalzadoRopa(String nombre, String descripcion, float precio,
                        String modelo, float talla, String tipo, int stock){
-        super(id, nombre, descripcion, precio);
+        super(id, nombre, descripcion,tipo, precio, stock);
 
         this.modelo = modelo;
         this.talla = talla;
-        this.tipo = tipo;
-        this.stock = stock;
     }
 
     public String getModelo(){
@@ -36,22 +32,6 @@ public class CalzadoRopa extends  Producto{
     }
 
 
-    public String getTipo(){
-        return this.tipo;
-    }
-
-    public String SetTipo(String tipo){
-        return this.tipo = tipo;
-    }
-
-    public int getStock(){
-        return this.stock;
-    }
-
-    public int SetStock(int stock){
-        return this.stock = stock;
-    }
-
 
     @Override
     public String descripcionProducto() {
@@ -61,8 +41,8 @@ public class CalzadoRopa extends  Producto{
                               "Precio del producto:" +  this.getPrecio()+"\n" +
                               "Modelo del producto:" +  this.modelo+"\n" +
                               "Talla del producto:" + this.talla+"\n" +
-                              "Tipo del producto:" + this.tipo+"\n" +
-                              "Stock del producto:"+ this.stock+"\n");
+                              "Tipo del producto:" + this.getTipo()+"\n" +
+                              "Stock del producto:"+ this.getStock()+"\n");
     }
 
     // Quitar esto
@@ -75,6 +55,8 @@ public class CalzadoRopa extends  Producto{
                 500, "B-50", 22, "Casual",20 );
         System.out.println(zapato2.getId());
         System.out.println(zapato3.getId());
+        System.out.println(zapato2.descripcionProducto());
+        zapato2.aumetarStock(10);
         System.out.println(zapato2.descripcionProducto());
 
     }
