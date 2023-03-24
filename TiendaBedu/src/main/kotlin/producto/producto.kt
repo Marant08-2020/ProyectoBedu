@@ -1,5 +1,5 @@
 package producto
-
+// Clase abstracta del producto
 abstract class Producto(var id: Int = 0,
                         var nommbre: String,
                         var descripcion: String,
@@ -13,6 +13,8 @@ abstract class Producto(var id: Int = 0,
         contadorProducto += 1
 
     }
+
+
 
     // Asigana como id el caontador
     init {
