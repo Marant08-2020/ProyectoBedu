@@ -22,7 +22,7 @@ public class CalzadoRopa extends  Producto{
 
     @Override
     public String descripcionProducto() {
-     return  "\nTalla del producto:" + this.talla;
+     return  this + "\nTalla del producto:" + this.talla;
     }
 
     // Quitar esto
@@ -35,7 +35,7 @@ public class CalzadoRopa extends  Producto{
                 500, "B-50", 22, "Casual",20 );
         System.out.println(zapato2.getId());
         System.out.println(zapato3.getId());
-        System.out.println(zapato2.toString() + zapato2.descripcionProducto());
+        System.out.println(zapato2.descripcionProducto());
         zapato2.aumetarStock(10);
         System.out.println(zapato2.descripcionProducto());
 
