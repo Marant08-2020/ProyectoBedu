@@ -1,4 +1,0 @@
-package orden
-
-class orden {
-}
