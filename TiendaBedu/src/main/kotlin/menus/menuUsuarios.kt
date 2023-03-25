@@ -9,9 +9,9 @@ fun inicioSesion(){
 
     do {
         println("1. Iniciar sesión")
-        println("2. Crear user")
+        println("2. Crear usuario")
         println("3. Cambiar pasword")
-        println("4. Salir")
+        println("4. Regresar a menú principal")
         print("Ingrese una opción: ")
         opc = readLine()?.toInt() as Int
 
@@ -19,7 +19,7 @@ fun inicioSesion(){
             1 -> iniciarSesion()
             2 -> crearUser()
             3 -> cambiarPassword()
-            4 -> println("Saliendo del menu")
+            4 -> menuPrincipal()
             else -> {
                 println("Opción no válida")
             }
@@ -46,7 +46,7 @@ fun crearUser(){
     val usuario = User(nombre = name,
         apellido = apellido, email = email,
         password = password)
-    println("Se agredo el userio con id:${usuario.id}")
+    println("Se agregó el usuario con id:${usuario.id}")
 
     arregloUser.addLast(usuario)
 
@@ -88,7 +88,7 @@ fun cambiarPassword(){
     }else{
         print("contraseña nueva:")
         val nuevoPassword =readln()
-        print("Con firmar contraseña nueva:")
+        print("Confirmar contraseña nueva:")
         val confirmarPassword =readln()
         if(nuevoPassword== confirmarPassword){
             // usa el set de la class data
