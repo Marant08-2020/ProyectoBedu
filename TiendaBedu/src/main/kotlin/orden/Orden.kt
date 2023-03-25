@@ -18,9 +18,17 @@ class Orden(var noOrden: Int = 0): Impuesto {
         val fecha = Date()
     }
 
-    fun agregarProducto(){
+    fun agregarProducto(producto: Producto){
+        arregloProducto.addLast(producto)
+        println("producto agregado")
 
-        println("agregando producto")
+    }
+
+    fun eliminarProducto(producto: Producto){
+
+    }
+
+    fun calcularTotal(){
 
     }
 

@@ -1,11 +1,12 @@
 package menus
 
 import orden.Orden
+import producto.Producto
 import user.User
 import java.util.*
 
 // Variable global de ordenes
-var arregloOrdenes =  LinkedList<Orden>()
+var arregloOrden =  LinkedList<Orden>()
 
 fun menuOrden(){
     println("\n********** Menú de Ordenes ***********")
@@ -42,12 +43,12 @@ fun crearOrden(){
     val orden = Orden()
 //    println("Se agregó el usuario con id:${usuario.id}")
 
-    arregloOrdenes.addLast(orden)
+    arregloOrden.addLast(orden)
 
     do {
         println("Orden actual No. ${orden.noOrden}")
 
-//        Productos en el carrito:
+        //        Productos en el carrito:
         if (orden.arregloProducto.isEmpty()){
             println("Aún no hay productos agregados")
         } else{
@@ -63,7 +64,7 @@ fun crearOrden(){
         opc = readLine()?.toInt() as Int
 
         when (opc) {
-//            1 -> modificarOrden()
+            1 -> modificarOrden(orden)
 //            2 -> confirmarOrden()
 //            3 -> cancelarOrden()
             4 -> menuOrden()
@@ -74,3 +75,23 @@ fun crearOrden(){
 
     } while (opc != 4)
 }
+
+fun modificarOrden(orden: Orden){
+    var opc: Int
+
+    Producto.foreach(){
+        println("${Producto.Id}. ${Producto.nombre}")
+    }
+    print("Ingrese una opción: ")
+    opc = readLine()?.toInt() as Int
+
+    do{
+//    val productoAmodificar = arregloProducto.filter { Producto -> Producto.Producto.id == opc }
+//    orden.arregloProducto.addLast(producto)
+
+    }while(opc != 4)
+
+    println(orden.arregloProducto)
+}
+
+
