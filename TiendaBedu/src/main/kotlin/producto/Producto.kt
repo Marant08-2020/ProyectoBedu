@@ -1,7 +1,7 @@
 package producto
 // Clase abstracta del producto
 abstract class Producto(var id: Int = 0,
-                        var nommbre: String,
+                        var nombre: String,
                         var descripcion: String,
                         var tipo: String,
                         var modelo: String,
@@ -11,20 +11,19 @@ abstract class Producto(var id: Int = 0,
     companion object{
         protected var contadorProducto: Int =0
     }
-    // Inica el contador de prodectos intanciados
+    // Inicia el contador de productos instanciados
     init {
         contadorProducto += 1
-
     }
 
-    // Asigana como id el caontador
+    // Asigna como id el contador
     init {
         this.id= contadorProducto
     }
 
-    abstract  fun descripcionProducto(): String?
+    abstract fun descripcionProducto(): String?
 
-    open fun aumetarStock(stock: Int): Int {
+    open fun aumentarStock(stock: Int): Int {
         return stock.let { this@Producto.stock += it; stock }
     }
 
@@ -34,21 +33,20 @@ abstract class Producto(var id: Int = 0,
             return stock.let { this@Producto.stock += it; stock }
 
         }else{
-            throw Error("Existencia insuficiente inventario de:${this.stock}")
+            throw Error("Existencia insuficiente en inventario de: ${this.nombre}")
         }
 
     }
 
     override fun toString(): String {
         return """
-           
-           Id del producto:${this.id}
-           Nombre del producto:${this.nommbre} 
-           Descripción del producto:${this.descripcion} 
-           Precio del producto:${this.precio} 
-           Modelo del producto:${this.modelo}
-           Tipo del producto:${this.tipo}
-           Stock del producto:${this.stock}
+           Id del producto: ${this.id}
+           Nombre del producto: ${this.nombre} 
+           Descripción del producto: ${this.descripcion} 
+           Precio del producto: ${this.precio} 
+           Modelo del producto: ${this.modelo}
+           Tipo del producto: ${this.tipo}
+           Stock del producto: ${this.stock}
         """.trimIndent()
     }
 
