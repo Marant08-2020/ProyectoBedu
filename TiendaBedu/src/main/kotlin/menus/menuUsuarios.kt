@@ -1,8 +1,7 @@
 package menus
 
 import user.User
-import java.util.LinkedList
-import menus.menuPrincipal
+import java.util.*
 
 
 fun inicioSesion(){

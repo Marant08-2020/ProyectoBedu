@@ -1,12 +1,11 @@
 package orden
+import java.util.LinkedList
 import producto.Producto
 import impuesto.Impuesto
-import java.util.*
 
 class Orden(noOrden: Int = 0,
-            listProducto: LinkedList<Producto> =  LinkedList<Producto>()
     ): Impuesto {
-
+    var arregloProducto = LinkedList<Producto>()
     companion object{
         protected var contadorOrden: Int =0
     }
