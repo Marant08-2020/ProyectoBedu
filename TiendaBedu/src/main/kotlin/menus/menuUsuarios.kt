@@ -2,8 +2,7 @@ package menus
 
 import user.User
 import java.util.LinkedList
-// importación temporal en lo que se creal el menu proncipal
-import menuPrincipa
+import menus.menuPrincipal
 
 
 fun inicioSesion(){
@@ -71,7 +70,7 @@ fun iniciarSesion() {
             println("**El usuario no existe**")
         }else{
             if( loginUser[0].password == passwordUser){
-                menuPrincipa()
+                menuPrincipal()
             }else{
                 println("***Contraseña inválidad***")
             }

@@ -1,10 +1,10 @@
 package orden
-import java.util.LinkedList
-import Producto
-import `interface`.Impuesto
+import producto.Producto
+import impuesto.Impuesto
+import java.util.*
 
 class Orden(noOrden: Int = 0,
-            listaProductos: listOf<Producto>
+            listProducto: LinkedList<Producto> =  LinkedList<Producto>()
     ): Impuesto {
 
     companion object{
