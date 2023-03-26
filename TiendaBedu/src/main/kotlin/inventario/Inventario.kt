@@ -6,9 +6,6 @@ import producto.Hogar
 import java.util.*
 
 class Inventario {
-
-
-
     companion object{
         var listaDeInventario = LinkedList<Producto>()
 
@@ -36,7 +33,29 @@ class Inventario {
                 agregarInventario(productoHogar)
             }
         }
+        // Se usa una función lambda
+        fun buscarProducto(_id: Int): List<Producto> {
+            val objetoProducto = Inventario.
+                                   listaDeInventario.filter { Producto-> Producto.id == _id  }
+            return objetoProducto
+        }
 
+        fun eliminarProducto(_id: Int){
+             val objetoEliminar = buscarProducto(_id)
+            Inventario.listaDeInventario.remove(element = objetoEliminar[0])
+        }
+
+        fun actualizarStock(_id: Int, cantidad: Int, operacion: String){
+            val productoStock = buscarProducto(_id)
+            when(operacion){
+                "+", "aumentar" -> {productoStock[0].aumentarStock(cantidad)}
+                "-", "disminuir" -> {productoStock[0].descontarStock(cantidad)}
+                else-> println("Parametro incorrecto use los siguients opciones:" +
+                        "+ o aumentar  - o disminuir")
+
+            }
+
+        }
 
     }
 
@@ -54,12 +73,4 @@ fun main(args: Array<String>) {
      "Hogar", "Mabe-12",100000f,10, numeroSerie = "MB-'1112")
 
 
-    for (p in Inventario.listaDeInventario){
-      println(p.id)
-
-   }
-
-   val test = Inventario.listaDeInventario.filter { Producto-> Producto.id == 3  }
-  // println(test[0].id)
-  println(test)
 }

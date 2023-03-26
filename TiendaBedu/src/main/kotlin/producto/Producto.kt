@@ -30,7 +30,7 @@ abstract class Producto(var id: Int = 0,
     open fun descontarStock(stock: Int): Int {
         val difSctok:Int = this.stock - stock
         if(difSctok>=0){
-            return stock.let { this@Producto.stock += it; stock }
+            return stock.let { this@Producto.stock -= it; stock }
 
         }else{
             throw Error("Existencia insuficiente en inventario de: ${this.nombre}")
