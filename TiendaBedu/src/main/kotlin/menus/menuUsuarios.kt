@@ -13,18 +13,22 @@ fun inicioSesion(){
         println("3. Cambiar pasword")
         println("4. Salir")
         print("Ingrese una opción: ")
-        opc = readLine()?.toInt() as Int
-
-        when (opc) {
-            1 -> iniciarSesion()
-            2 -> crearUser()
-            3 -> cambiarPassword()
-            4 -> println("Saliendo del menu")
-            else -> {
-                println("Opción no válida")
+        try {
+            opc = readLine()?.toInt() as Int
+            when (opc) {
+                1 -> iniciarSesion()
+                2 -> crearUser()
+                3 -> cambiarPassword()
+                4 -> println("Saliendo del menu")
+                else -> {
+                    println("Opción no válida")
+                }
             }
-        }
+        }catch (exception: NumberFormatException){
+            opc=0
+            println("Solo acepta valores del 1..4")
 
+        }
     } while (opc != 4)
 
 }

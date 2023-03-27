@@ -43,6 +43,7 @@ class Inventario {
         fun eliminarProducto(_id: Int){
              val objetoEliminar = buscarProducto(_id)
             Inventario.listaDeInventario.remove(element = objetoEliminar[0])
+
         }
 
         fun actualizarStock(_id: Int, cantidad: Int, operacion: String){
@@ -58,8 +59,6 @@ class Inventario {
         }
 
     }
-
-
 
 }
 
