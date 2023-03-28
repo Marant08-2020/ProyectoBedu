@@ -21,8 +21,8 @@ class Inventario {
             stock: Int=0,
             talla: Float=0f,
             numeroSerie:String=" "){
-            val  tipo = tipo.lowercase()
-            if(tipo == "ropa" || tipo =="calzado"){
+            val  tipoVal = tipo.lowercase()
+            if(tipoVal == "ropa" || tipoVal =="calzado"){
                 val productoCalzadoRopa = CalzadoRopa(nombre, descripcion
                     ,precio,modelo,talla,tipo, stock)
                 agregarInventario(productoCalzadoRopa)
@@ -35,15 +35,29 @@ class Inventario {
         }
         // Se usa una función lambda
         fun buscarProducto(_id: Int): List<Producto> {
-            val objetoProducto = Inventario.
-                                   listaDeInventario.filter { Producto-> Producto.id == _id  }
+            val objetoProducto = listaDeInventario.filter { Producto-> Producto.id == _id  }
             return objetoProducto
         }
 
         fun eliminarProducto(_id: Int){
              val objetoEliminar = buscarProducto(_id)
-            Inventario.listaDeInventario.remove(element = objetoEliminar[0])
+             listaDeInventario.remove(element = objetoEliminar[0])
 
+        }
+        fun visualizarInventario(){
+            val productos =listaDeInventario
+            println("""
+            Inventario:
+            -------------------------------------------------------
+        """.trimIndent())
+            productos.forEach{
+
+                println(it)
+                println("""
+            -------------------------------------------------------
+        """.trimIndent())
+
+            }
         }
 
         fun actualizarStock(_id: Int, cantidad: Int, operacion: String){

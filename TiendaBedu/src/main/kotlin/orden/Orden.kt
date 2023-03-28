@@ -1,13 +1,13 @@
 package orden
 import java.util.LinkedList
-import producto.CalzadoRopa
 import impuesto.Impuesto
+import inventario.Inventario
 
 class Orden(noOrden: Int = 0,
     ): Impuesto {
-    var arregloProducto = LinkedList<Any>()
+    var objetoProducto: MutableMap<String, Any>  = mutableMapOf()
+    var listaProducto = LinkedList<MutableMap<String, Any>>()
         get() = field
-
         set(value) {
             field= value
         }
@@ -19,28 +19,41 @@ class Orden(noOrden: Int = 0,
         contadorOrden += 1
     }
 
-    fun agregarProducto(producto: Any){
-        arregloProducto.addLast(producto)
+    fun agregarProductoOrden(_id: Int, numProductos:Int){
+
+        val prodectoOrden = Inventario.buscarProducto(_id)
+
+        if(prodectoOrden.isEmpty()){
+            println("No hay inventario pra el producto Id:$_id")
+        }else{
+
+            objetoProducto["_id"]=prodectoOrden[0].id
+            objetoProducto["Descripción"] = prodectoOrden[0].descripcion
+            objetoProducto["Cantidad"] = numProductos
+
+        }
+
     }
-
-
 
 
 }
 
 fun main(args: Array<String>) {
-   val  orden1 = Orden()
-   val product1 = CalzadoRopa("Zapato Blanco","Zapato",350f,"B-50",
-       22f,"casual",30)
-   println(product1.descripcionProducto())
-  orden1.agregarProducto(product1)
-  println(orden1.arregloProducto)
-  val product2 = CalzadoRopa("Zapato Negro","Zapato",380f,"N-50",
-        22.5f,"casual",10)
-  orden1.agregarProducto(product2)
 
-  println(orden1.arregloProducto)
 
+    Inventario.agregarProductoInventario(nombre = "Zapato", descripcion = "Zapato Blanco",
+    tipo = "Calzado", modelo = "ZAP-00", precio = 330f, stock = 50, talla = 22.5f)
+
+    Inventario.agregarProductoInventario(nombre = "Pantalon", descripcion = "Pantalón mezclila azul",
+        tipo = "Ropa", modelo = "PA-00", precio = 700f, stock = 20, talla = 32F)
+
+    Inventario.agregarProductoInventario(nombre = "Televisión", descripcion = "Tv led samsung 40 pulgadas",
+        tipo = "Hogar", modelo = "SA-0002", precio = 100500f, stock = 10, numeroSerie = "STVMX-0001")
+
+    Inventario.visualizarInventario()
+
+    val orden1 = Orden()
+    orden1.agregarProductoOrden(10, 2)
 }
 
 
