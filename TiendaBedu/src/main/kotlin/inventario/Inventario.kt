@@ -27,7 +27,7 @@ class Inventario {
                     ,precio,modelo,talla,tipo, stock)
                 agregarInventario(productoCalzadoRopa)
 
-            }else if (tipo=="hogar"){
+            }else if (tipoVal == "hogar"){
                 val productoHogar = Hogar(nombre,numeroSerie,modelo,
                     descripcion,precio,tipo,stock)
                 agregarInventario(productoHogar)

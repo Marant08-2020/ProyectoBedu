@@ -3,7 +3,7 @@ package impuesto
 interface Impuesto {
 
         companion object {
-            val  taxIvaMx = 1.16f
+            val  taxIvaMx = 0.16f
         }
-   open fun calcularImpuestos(){}
+   open fun calcularImpuestos(precio: Float): Float
 }

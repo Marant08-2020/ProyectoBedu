@@ -3,14 +3,15 @@ import java.util.LinkedList
 import impuesto.Impuesto
 import inventario.Inventario
 
-class Orden(noOrden: Int = 0,
+class Orden(var noOrden: Int = 0,
     ): Impuesto {
     var objetoProducto: MutableMap<String, Any>  = mutableMapOf()
     var listaProducto = LinkedList<MutableMap<String, Any>>()
-        get() = field
-        set(value) {
-            field= value
-        }
+    override fun calcularImpuestos(precio: Float): Float{
+        return precio * Impuesto.taxIvaMx
+    }
+
+
     companion object{
         protected var contadorOrden: Int =0
     }
@@ -19,20 +20,41 @@ class Orden(noOrden: Int = 0,
         contadorOrden += 1
     }
 
-    fun agregarProductoOrden(_id: Int, numProductos:Int){
+    init {
+        this.noOrden = contadorOrden
+    }
 
-        val prodectoOrden = Inventario.buscarProducto(_id)
+    fun agregarProductoOrden(_id: Int, numProductos:Int): MutableMap<String, Any> {
 
-        if(prodectoOrden.isEmpty()){
+        val productoOrden = Inventario.buscarProducto(_id)
+
+
+
+        if(productoOrden.isEmpty()){
             println("No hay inventario pra el producto Id:$_id")
         }else{
+            val subtotal = numProductos * productoOrden[0].precio
+            val iva: Float = calcularImpuestos(subtotal)
+            objetoProducto = mutableMapOf<String, Any>(
+                "_id" to productoOrden[0].id,
+                "Descripción" to productoOrden[0].descripcion,
+                "Cantidad" to numProductos,
+                "precio" to productoOrden[0].precio,
+                "subtotal" to subtotal,
+                "iva" to iva,
+                "total" to subtotal + iva
+            )
 
-            objetoProducto["_id"]=prodectoOrden[0].id
-            objetoProducto["Descripción"] = prodectoOrden[0].descripcion
-            objetoProducto["Cantidad"] = numProductos
-
+            listaProducto.addLast(objetoProducto)
         }
+        return objetoProducto
+    }
 
+    fun visualizarListaProductos(){
+
+        listaProducto.forEach(){
+            println(it)
+        }
     }
 
 
@@ -53,7 +75,11 @@ fun main(args: Array<String>) {
     Inventario.visualizarInventario()
 
     val orden1 = Orden()
-    orden1.agregarProductoOrden(10, 2)
+    orden1.agregarProductoOrden(1, 3)
+    orden1.agregarProductoOrden(2, 2)
+    orden1.agregarProductoOrden(3, 3)
+    orden1.visualizarListaProductos()
+//    println( orden1.listaProducto )
 }
 
 

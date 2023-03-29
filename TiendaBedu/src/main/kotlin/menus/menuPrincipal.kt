@@ -9,7 +9,7 @@ fun menuPrincipal(){
         print("Ingrese una opción: ")
         opc = readLine()?.toInt() as Int
         when(opc){
-            1-> menuInventario()
+//            1-> menuInventario()
             2-> println("Hola")
             3-> println("Saliendo del menu")
             else -> {
