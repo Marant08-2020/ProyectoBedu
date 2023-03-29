@@ -1,6 +1,7 @@
 package menus
 
 import inventario.Inventario
+import orden.Estados
 import orden.Orden
 import producto.Producto
 import user.User
@@ -24,7 +25,7 @@ fun menuOrden(){
 
         when (opc) {
             1 -> crearOrden()
-            2 -> listaDeOrden()
+            2 -> listaDeOrdenes()
 //            3 -> eliminarOrden()
 //            4 -> menuPrincipal()
             4 -> println("Saliendo")
@@ -37,19 +38,20 @@ fun menuOrden(){
 
 }
 
-fun listaDeOrden(){
+fun listaDeOrdenes(){
     val ordenes = arregloOrden
     println("""
             Ordenes:
-            -------------------------------------------------------
+            ------------------------------------------------------------------------------------------------------------------------
         """.trimIndent())
     ordenes.forEach{
 
-        println(it)
+        println("No. de orden: ${it.noOrden}  fecha de creación: ${it.fechaCreacion}   estado de la orden: ${it.statusOrden}")
+        it.visualizarListaProductos()
         println("""
-            -------------------------------------------------------
+            ------------------------------------------------------------------------------------------------------------------------
         """.trimIndent())
-
+        println("Total: ${500}")
     }
 }
 //val orden = Orden()
@@ -61,21 +63,24 @@ fun crearOrden() {
     val orden = Orden()
     arregloOrden.addLast(orden)
 
-    println("ID de orden:${orden.noOrden}")
     println("Productos disponibles: ")
-    Inventario.visualizarInventario()
 
     do {
-        println("1. agregar/quitar productos")
+        Inventario.visualizarInventario()
+
+        println("Número de orden: ${orden.noOrden}")
+        orden.visualizarListaProductos()
+
+        println("1. Agregar productos")
         println("2. Confirmar Orden")
 //        println("3. Cancelar orden")
-        println("4. Regresar a menú principal")
+        println("4. Regresar")
         print("Ingrese una opción: ")
         opc = readLine()?.toInt() as Int
 
         when(opc){
             1 -> agregarOrdenProducto(orden)
-//            2 -> confirmarOrden()
+            2 -> confirmarOrden(orden)
 //            3 -> cancelarOrden()
             4 -> menuOrden()
             else -> println("Opción no válida")
@@ -107,7 +112,51 @@ fun buscarOrden(noOrden: Int): List<Orden>{
     return objetoOrden
 }
 
+fun confirmarOrden(orden: Orden){
+    if(orden.listaProducto.isEmpty()){
+        println("No se púede procesar compra porque aún no tiene productos agregados")
+        return
+    }
 
+    if(orden.statusOrden != Estados.PENDIENTE){
+        println("Esta orden ya fue procesada")
+        return
+    }
+
+    println("""
+            ------------------------------------------------------------------------------------------------------------------------
+            Confirmación de Orden No. ${orden.noOrden}:
+    """.trimIndent())
+
+    orden.visualizarListaProductos()
+    println("""
+            ------------------------------------------------------------------------------------------------------------------------
+    """.trimIndent())
+    println("Total a pagar: $${orden.calcularTotal()}")
+
+    var opc: Int
+
+    do{
+        println("1. Pagar")
+        println("2. Regresar")
+        print("Ingrese una opción: ")
+        opc = readLine()?.toInt() as Int
+
+        when(opc){
+            1 -> {
+                orden.procesarOrden()
+                println("Gracias por su compra!")
+                opc = 2
+            }
+            2 -> println("Regresando a menu de ordenes")
+            else -> println("Opción no válida")
+        }
+    }while(opc !=2)
+
+
+
+
+}
 
 
 fun main(){

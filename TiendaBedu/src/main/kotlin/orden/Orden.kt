@@ -1,7 +1,7 @@
 package orden
-import java.util.LinkedList
 import impuesto.Impuesto
 import inventario.Inventario
+import java.util.*
 import kotlin.reflect.typeOf
 
 enum class Estados {
@@ -14,6 +14,9 @@ class Orden(var noOrden: Int = 0,
     var objetoProducto: MutableMap<String, Any>  = mutableMapOf()
     var listaProducto = LinkedList<MutableMap<String, Any>>()
     var statusOrden = Estados.PENDIENTE
+    var totalOrden = 0f
+
+    var fechaCreacion = Date().toString()
     override fun calcularImpuestos(precio: Float): Float{
         return precio * Impuesto.taxIvaMx
     }
@@ -59,9 +62,13 @@ class Orden(var noOrden: Int = 0,
     }
 
     fun visualizarListaProductos(){
-
-        listaProducto.forEach(){
-            println(it)
+        if (listaProducto.isEmpty()){
+            println("Aún no hay productos agregados")
+        }else{
+            println("productos: ")
+            listaProducto.forEach(){
+                println(it)
+            }
         }
     }
 
@@ -81,6 +88,7 @@ class Orden(var noOrden: Int = 0,
                 }
 
             }
+            statusOrden = Estados.COMPLETA                            // Preguntar si esta línea va aquí
         }
     }
 
@@ -93,6 +101,14 @@ class Orden(var noOrden: Int = 0,
         return  intValue
     }
 
+    fun calcularTotal(): Float {
+        var sumaTotal: Float = 0f
+        if (!listaProducto.isEmpty()){
+            for (producto in listaProducto)
+                sumaTotal += producto["total"].toString().toFloat()
+        }
+        return sumaTotal
+    }
 
 }
 
