@@ -1,6 +1,5 @@
 package user
 
-//private var contadorUser: Int =0
 data class User(var id: Int =0,
                 var nombre: String,
                 var apellido: String,
