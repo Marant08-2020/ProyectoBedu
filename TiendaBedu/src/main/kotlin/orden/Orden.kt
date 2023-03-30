@@ -37,7 +37,7 @@ class Orden(var noOrden: Int = 0,
         val productoOrden = Inventario.buscarProducto(_id)
 
         if(productoOrden.isEmpty()){
-            println("No hay inventario pra el producto Id:$_id")
+            println("No hay inventario para el producto Id:$_id")
         }else{
             val subtotal = numProductos * productoOrden[0].precio
             val iva: Float = calcularImpuestos(subtotal)
@@ -53,11 +53,12 @@ class Orden(var noOrden: Int = 0,
             )
 
             listaProducto.addLast(objetoProducto)
+            println("productos agregados")
         }
         return objetoProducto
     }
 
-    fun visualizarListaProductos(){
+    fun printListaProductos(){
         if (listaProducto.isEmpty()){
             println("Aún no hay productos agregados")
         }else{
@@ -141,12 +142,12 @@ fun main(args: Array<String>) {
     orden1.agregarProductoOrden(2, 2)
     orden1.agregarProductoOrden(3, 100)
 
-    orden1.visualizarListaProductos()
+    orden1.printListaProductos()
 //   println( orden1.listaProducto )
     orden1.procesarOrden()
     orden1.actualizarNumCantidaProducto(3,2)
     orden1.procesarOrden()
-    orden1.visualizarListaProductos()
+    orden1.printListaProductos()
 
     Inventario.visualizarInventario()
 //    orden1.visualizarListaProductos()
