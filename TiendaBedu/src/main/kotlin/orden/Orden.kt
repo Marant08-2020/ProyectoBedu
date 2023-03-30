@@ -21,7 +21,6 @@ class Orden(var noOrden: Int = 0,
         return precio * Impuesto.taxIvaMx
     }
 
-
     companion object{
         protected var contadorOrden: Int =0
     }
@@ -37,8 +36,6 @@ class Orden(var noOrden: Int = 0,
     fun agregarProductoOrden(_id: Int, numProductos:Int): MutableMap<String, Any> {
 
         val productoOrden = Inventario.buscarProducto(_id)
-
-
 
         if(productoOrden.isEmpty()){
             println("No hay inventario pra el producto Id:$_id")
@@ -81,19 +78,26 @@ class Orden(var noOrden: Int = 0,
             listaProducto.forEach {
                 val idProducto = it["_id"]?.let { it1 -> castingInt(it1) }
                 val cantidadProducto = it["Cantidad"]?.let { it2 -> castingInt(it2) }
-                if (idProducto != null && cantidadProducto != null) {
-                   Inventario.actualizarStock(idProducto,
-                                             cantidadProducto, "-")
-                    it["statusProducto"] = Estados.SURTIDO
+                if (idProducto != null && cantidadProducto != null &&
+                    it["statusProducto"] == Estados.PENDIENTE) {
+                   try{
+                       Inventario.actualizarStock(idProducto,
+                           cantidadProducto, "-")
+                       it["statusProducto"] = Estados.SURTIDO
+                       statusOrden = Estados.COMPLETA
+                   }catch (e:Error){
+                       println("${e.message} en id:$idProducto ")
+                       statusOrden = Estados.PENDIENTE
+                   }
+
                 }
 
             }
-            statusOrden = Estados.COMPLETA                            // Preguntar si esta línea va aquí
         }
     }
 
     fun castingInt(value:Any): Int {
-        var intValue: Int = 0
+        var intValue = 0
         if (value is Any) {
            intValue= value.toString().toInt()
 
@@ -102,12 +106,23 @@ class Orden(var noOrden: Int = 0,
     }
 
     fun calcularTotal(): Float {
-        var sumaTotal: Float = 0f
+        var sumaTotal = 0f
         if (!listaProducto.isEmpty()){
             for (producto in listaProducto)
                 sumaTotal += producto["total"].toString().toFloat()
         }
         return sumaTotal
+    }
+
+    fun actualizarNumCantidaProducto(_id: Int, cantidad: Int){
+
+         val objetoLista = listaProducto.
+         filter { objetoProducto-> objetoProducto["_id"] == _id }
+        if(objetoLista.isEmpty()){
+            println("Producto no existe")
+        }else{
+            objetoLista[0]["Cantidad"]=cantidad
+        }
     }
 
 }
@@ -129,13 +144,16 @@ fun main(args: Array<String>) {
     val orden1 = Orden()
     orden1.agregarProductoOrden(1, 3)
     orden1.agregarProductoOrden(2, 2)
-    orden1.agregarProductoOrden(3, 3)
+    orden1.agregarProductoOrden(3, 100)
+    orden1.visualizarListaProductos()
+
+    orden1.actualizarNumCantidaProducto(3,2)
     orden1.visualizarListaProductos()
 //    println( orden1.listaProducto )
-    orden1.procesarOrden()
+//    orden1.procesarOrden()
 
-    Inventario.visualizarInventario()
-    orden1.visualizarListaProductos()
+//    Inventario.visualizarInventario()
+//    orden1.visualizarListaProductos()
 }
 
 
