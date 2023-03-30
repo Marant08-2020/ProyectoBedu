@@ -2,7 +2,6 @@ package orden
 import impuesto.Impuesto
 import inventario.Inventario
 import java.util.*
-import kotlin.reflect.typeOf
 
 enum class Estados {
     PENDIENTE, COMPLETA, SURTIDO
@@ -97,12 +96,8 @@ class Orden(var noOrden: Int = 0,
     }
 
     fun castingInt(value:Any): Int {
-        var intValue = 0
-        if (value is Any) {
-           intValue= value.toString().toInt()
-
-        }
-        return  intValue
+       val  intValue= value.toString().toInt()
+       return intValue
     }
 
     fun calcularTotal(): Float {
@@ -145,14 +140,15 @@ fun main(args: Array<String>) {
     orden1.agregarProductoOrden(1, 3)
     orden1.agregarProductoOrden(2, 2)
     orden1.agregarProductoOrden(3, 100)
-    orden1.visualizarListaProductos()
 
+    orden1.visualizarListaProductos()
+//   println( orden1.listaProducto )
+    orden1.procesarOrden()
     orden1.actualizarNumCantidaProducto(3,2)
+    orden1.procesarOrden()
     orden1.visualizarListaProductos()
-//    println( orden1.listaProducto )
-//    orden1.procesarOrden()
 
-//    Inventario.visualizarInventario()
+    Inventario.visualizarInventario()
 //    orden1.visualizarListaProductos()
 }
 
