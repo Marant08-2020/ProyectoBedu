@@ -10,11 +10,16 @@ public class Hogar extends Producto {
         this.numeroSerie = numeroSerie;
     }
 
-    public String getnumeroSerie() { return this.numeroSerie; }
-    public void setNumeroSerie(String numeroSerie) { this.numeroSerie = numeroSerie; }
+    public String getnumeroSerie() {
+        return this.numeroSerie;
+    }
+
+    public void setNumeroSerie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
+    }
 
     @Override
     public String descripcionProducto() {
-        return  this + "\nNúmero de serie: " + this.numeroSerie;
+        return this + "\nNúmero de serie: " + this.numeroSerie;
     }
 }

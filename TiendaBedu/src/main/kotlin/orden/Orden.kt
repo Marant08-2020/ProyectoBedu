@@ -1,4 +1,5 @@
 package orden
+
 import impuesto.Impuesto
 import inventario.Inventario
 import java.util.*
@@ -7,23 +8,24 @@ enum class Estados {
     PENDIENTE, COMPLETA, SURTIDO
 }
 
-class Orden(var noOrden: Int = 0,
-    ): Impuesto {
+class Orden(
+    var noOrden: Int = 0,
+) : Impuesto {
 
-    var objetoProducto: MutableMap<String, Any>  = mutableMapOf()
+    private var objetoProducto: MutableMap<String, Any> = mutableMapOf()
     var listaProducto = LinkedList<MutableMap<String, Any>>()
     var statusOrden = Estados.PENDIENTE
-    var totalOrden = 0f
+    private var totalOrden = 0f
 
     var fechaCreacion = Date().toString()
-    override fun calcularImpuestos(precio: Float): Float{
+    override fun calcularImpuestos(precio: Float): Float {
         return precio * Impuesto.taxIvaMx
     }
 
-    companion object{
-        protected var contadorOrden: Int =0
+    companion object {
+        protected var contadorOrden: Int = 0
     }
-    // Inicia el contador de productos instanciados
+
     init {
         contadorOrden += 1
     }
@@ -32,16 +34,16 @@ class Orden(var noOrden: Int = 0,
         this.noOrden = contadorOrden
     }
 
-    fun agregarProductoOrden(_id: Int, numProductos:Int): MutableMap<String, Any> {
+    fun agregarProductoOrden(id: Int, numProductos: Int): MutableMap<String, Any> {
 
-        val productoOrden = Inventario.buscarProducto(_id)
+        val productoOrden = Inventario.buscarProducto(id)
 
-        if(productoOrden.isEmpty()){
-            println("No hay inventario para el producto Id:$_id")
-        }else{
+        if (productoOrden.isEmpty()) {
+            println("No hay inventario para el producto Id:$id")
+        } else {
             val subtotal = numProductos * productoOrden[0].precio
             val iva: Float = calcularImpuestos(subtotal)
-            objetoProducto = mutableMapOf<String, Any>(
+            objetoProducto = mutableMapOf(
                 "_id" to productoOrden[0].id,
                 "Descripción" to productoOrden[0].descripcion,
                 "Cantidad" to numProductos,
@@ -58,37 +60,39 @@ class Orden(var noOrden: Int = 0,
         return objetoProducto
     }
 
-    fun printListaProductos(){
-        if (listaProducto.isEmpty()){
+    fun printListaProductos() {
+        if (listaProducto.isEmpty()) {
             println("Aún no hay productos agregados")
-        }else{
+        } else {
             println("productos: ")
-            listaProducto.forEach(){
+            listaProducto.forEach() {
                 println(it)
             }
         }
     }
 
-    fun procesarOrden(){
-        if (statusOrden == Estados.COMPLETA){
+    fun procesarOrden() {
+        if (statusOrden == Estados.COMPLETA) {
             println("La orden ya fue procesada")
-        }
-        else{
+        } else {
             println("Procesando orden")
             listaProducto.forEach {
                 val idProducto = it["_id"]?.let { it1 -> castingInt(it1) }
                 val cantidadProducto = it["Cantidad"]?.let { it2 -> castingInt(it2) }
                 if (idProducto != null && cantidadProducto != null &&
-                    it["statusProducto"] == Estados.PENDIENTE) {
-                   try{
-                       Inventario.actualizarStock(idProducto,
-                           cantidadProducto, "-")
-                       it["statusProducto"] = Estados.SURTIDO
-                       statusOrden = Estados.COMPLETA
-                   }catch (e:Error){
-                       println("${e.message} en id:$idProducto ")
-                       statusOrden = Estados.PENDIENTE
-                   }
+                    it["statusProducto"] == Estados.PENDIENTE
+                ) {
+                    try {
+                        Inventario.actualizarStock(
+                            idProducto,
+                            cantidadProducto, "-"
+                        )
+                        it["statusProducto"] = Estados.SURTIDO
+                        statusOrden = Estados.COMPLETA
+                    } catch (e: Error) {
+                        println("${e.message} en id:$idProducto ")
+                        statusOrden = Estados.PENDIENTE
+                    }
 
                 }
 
@@ -96,28 +100,25 @@ class Orden(var noOrden: Int = 0,
         }
     }
 
-    fun castingInt(value:Any): Int {
-       val  intValue= value.toString().toInt()
-       return intValue
+    fun castingInt(value: Any): Int {
+        return value.toString().toInt()
     }
 
     fun calcularTotal(): Float {
-        var sumaTotal = 0f
-        if (!listaProducto.isEmpty()){
+        totalOrden = 0f
+        if (!listaProducto.isEmpty()) {
             for (producto in listaProducto)
-                sumaTotal += producto["total"].toString().toFloat()
+                totalOrden += producto["total"].toString().toFloat()
         }
-        return sumaTotal
+        return totalOrden
     }
 
-    fun actualizarNumCantidaProducto(_id: Int, cantidad: Int){
-
-         val objetoLista = listaProducto.
-         filter { objetoProducto-> objetoProducto["_id"] == _id }
-        if(objetoLista.isEmpty()){
+    fun actualizarNumCantidadProducto(id: Int, cantidad: Int) {
+        val objetoLista = listaProducto.filter { objetoProducto -> objetoProducto["id"] == id }
+        if (objetoLista.isEmpty()) {
             println("Producto no existe")
-        }else{
-            objetoLista[0]["Cantidad"]=cantidad
+        } else {
+            objetoLista[0]["Cantidad"] = cantidad
         }
     }
 
@@ -126,14 +127,20 @@ class Orden(var noOrden: Int = 0,
 fun main(args: Array<String>) {
 
 
-    Inventario.agregarProductoInventario(nombre = "Zapato", descripcion = "Zapato Blanco",
-    tipo = "Calzado", modelo = "ZAP-00", precio = 330f, stock = 50, talla = 22.5f)
+    Inventario.agregarProductoInventario(
+        nombre = "Zapato", descripcion = "Zapato Blanco",
+        tipo = "Calzado", modelo = "ZAP-00", precio = 330f, stock = 50, talla = 22.5f
+    )
 
-    Inventario.agregarProductoInventario(nombre = "Pantalon", descripcion = "Pantalón mezclila azul",
-        tipo = "Ropa", modelo = "PA-00", precio = 700f, stock = 20, talla = 32F)
+    Inventario.agregarProductoInventario(
+        nombre = "Pantalon", descripcion = "Pantalón mezclila azul",
+        tipo = "Ropa", modelo = "PA-00", precio = 700f, stock = 20, talla = 32F
+    )
 
-    Inventario.agregarProductoInventario(nombre = "Televisión", descripcion = "Tv led samsung 40 pulgadas",
-        tipo = "Hogar", modelo = "SA-0002", precio = 100500f, stock = 10, numeroSerie = "STVMX-0001")
+    Inventario.agregarProductoInventario(
+        nombre = "Televisión", descripcion = "Tv led samsung 40 pulgadas",
+        tipo = "Hogar", modelo = "SA-0002", precio = 100500f, stock = 10, numeroSerie = "STVMX-0001"
+    )
 
     Inventario.visualizarInventario()
 
@@ -145,7 +152,7 @@ fun main(args: Array<String>) {
     orden1.printListaProductos()
 //   println( orden1.listaProducto )
     orden1.procesarOrden()
-    orden1.actualizarNumCantidaProducto(3,2)
+    orden1.actualizarNumCantidadProducto(3, 2)
     orden1.procesarOrden()
     orden1.printListaProductos()
 

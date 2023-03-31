@@ -25,17 +25,17 @@ fun menuInventario() {
                     println("Opción no válida")
                 }
             }
-        }catch (exception: NumberFormatException){
-            opc=0
+        } catch (exception: NumberFormatException) {
+            opc = 0
             println("Solo acepta valores del 1..4")
 
         }
     } while (opc != 5)
 }
 
-fun agregarProducto(){
-    var tallaProducto: Float = 0f
-    val serieProducto: String = " "
+fun agregarProducto() {
+    var tallaProducto = 0f
+    val serieProducto = " "
     print("Nombre del producto:")
     val nombreProducto: String = readln()
     print("Descripción del producto:")
@@ -45,38 +45,40 @@ fun agregarProducto(){
     print("Tipo de producto:")
     var tipoProducto: String = readln()
     tipoProducto = tipoProducto.lowercase()
-    if (tipoProducto=="calzado" || tipoProducto=="ropa"){
-       print("Talla de producto:")
-       tallaProducto = readln().toFloat()
-    }else if(tipoProducto=="hogar"){
-      print("Número de serie:")
-      val serieProducto: String = readln()
+    if (tipoProducto == "calzado" || tipoProducto == "ropa") {
+        print("Talla de producto:")
+        tallaProducto = readln().toFloat()
+    } else if (tipoProducto == "hogar") {
+        print("Número de serie:")
+        val serieProducto: String = readln()
     }
     print("Precio del producto:")
     val precioProducto: Float = readln().toFloat()
     print("Stock del producto:")
     val stockProducto: Int = readln().toInt()
 
-    Inventario.agregarProductoInventario(nombre = nombreProducto, descripcion = descripcionProducto,
-                                         modelo = modeloProducto, tipo = tipoProducto,
-                                         talla = tallaProducto, numeroSerie = serieProducto,
-                                         stock = stockProducto, precio = precioProducto )
+    Inventario.agregarProductoInventario(
+        nombre = nombreProducto, descripcion = descripcionProducto,
+        modelo = modeloProducto, tipo = tipoProducto,
+        talla = tallaProducto, numeroSerie = serieProducto,
+        stock = stockProducto, precio = precioProducto
+    )
 }
 
-fun visulizarInventario(){
-   Inventario.visualizarInventario()
+fun visulizarInventario() {
+    Inventario.visualizarInventario()
 }
 
-fun eliminarProducto(){
+fun eliminarProducto() {
     print("Identificador del producto:")
     val identificadorProducto: Int = readln().toInt()
 
-    Inventario.eliminarProducto(_id = identificadorProducto)
+    Inventario.eliminarProducto(id = identificadorProducto)
     println("Producto eliminado")
 
 }
 
-fun actualizarInventario(){
+fun actualizarInventario() {
     print("Identificador del producto:")
     val identificadorProducto: Int = readln().toInt()
     print("Cantidad de producto:")
@@ -84,9 +86,11 @@ fun actualizarInventario(){
     print("Tipo de ajuste amuentar/disminuir:")
     val ajusteTipo: String = readln()
 
-    Inventario.actualizarStock(_id = identificadorProducto,
-                               cantidad = cantidadProducto,
-                               operacion = ajusteTipo)
+    Inventario.actualizarStock(
+        id = identificadorProducto,
+        cantidad = cantidadProducto,
+        operacion = ajusteTipo
+    )
 
     println("Inventario actualizado")
 
