@@ -4,6 +4,8 @@ import impuesto.Impuesto
 import inventario.Inventario
 import java.util.*
 
+
+
 enum class Estados {
     PENDIENTE, COMPLETA, SURTIDO
 }
@@ -114,7 +116,7 @@ class Orden(
     }
 
     fun actualizarNumCantidadProducto(id: Int, cantidad: Int) {
-        val objetoLista = listaProducto.filter { objetoProducto -> objetoProducto["id"] == id }
+        val objetoLista = listaProducto.filter { objetoProducto -> objetoProducto["_id"] == id }
         if (objetoLista.isEmpty()) {
             println("Producto no existe")
         } else {
@@ -122,6 +124,30 @@ class Orden(
         }
     }
 
+    fun ticketVenta(){
+        val ticket= ("""
+            _________________________________________________________
+            |                Tienda Bedu S.A de C.V                  |
+            |        Terminal móvil de venta PVM Bedu ver1.0         |
+            |________________________________________________________|
+            | #  |          Producto         |  Precio  |    Total   |
+            |____|___________________________|__________|____________|
+        """.trimIndent())
+
+        if (statusOrden == Estados.COMPLETA){
+            println(ticket)
+            listaProducto.forEach(){
+                val formaProducto = String.
+                format("|%-4s|%-27s|$%-9.2f|$%-11.2f|\n",
+                    it.get("Cantidad"), it.get("Descripción"),
+                    it.get("precio"),it.get("total") )
+                print(formaProducto)
+            }
+
+
+        }
+
+    }
 }
 
 fun main(args: Array<String>) {
@@ -138,7 +164,7 @@ fun main(args: Array<String>) {
     )
 
     Inventario.agregarProductoInventario(
-        nombre = "Televisión", descripcion = "Tv led samsung 40 pulgadas",
+        nombre = "Televisión", descripcion = "TV samsung 40 pulgadas",
         tipo = "Hogar", modelo = "SA-0002", precio = 100500f, stock = 10, numeroSerie = "STVMX-0001"
     )
 
@@ -149,15 +175,16 @@ fun main(args: Array<String>) {
     orden1.agregarProductoOrden(2, 2)
     orden1.agregarProductoOrden(3, 100)
 
-    orden1.printListaProductos()
+     orden1.printListaProductos()
 //   println( orden1.listaProducto )
-    orden1.procesarOrden()
-    orden1.actualizarNumCantidadProducto(3, 2)
-    orden1.procesarOrden()
-    orden1.printListaProductos()
+    //orden1.procesarOrden()
+   // orden1.actualizarNumCantidadProducto(3, 2)
+    //orden1.procesarOrden()
+   // orden1.printListaProductos()
 
-    Inventario.visualizarInventario()
+    //Inventario.visualizarInventario()
 //    orden1.visualizarListaProductos()
+      orden1.ticketVenta()
 }
 
 
