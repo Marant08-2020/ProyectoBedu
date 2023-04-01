@@ -1,6 +1,8 @@
 package menus
 
 import inventario.Inventario
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import orden.Estados
 import orden.Orden
 import java.util.*
@@ -179,59 +181,72 @@ fun buscarOrden(noOrden: Int): List<Orden> {
 }
 
 fun confirmarOrden(orden: Orden) {
-    if (orden.listaProducto.isEmpty()) {
-        println("No se puede procesar compra porque aún no tiene productos agregados")
-        return
+    orden.procesarOrden()
+
+//    Tema de corrutinas
+    runBlocking {
+        println("Imprimiendo ticket\n")
+        delay(2000)
+        orden.ticketVenta()
+
     }
 
-    if (orden.statusOrden != Estados.PENDIENTE) {
-        println("Esta orden ya fue procesada")
-        return
-    }
-
-    println(
-        """
-            ------------------------------------------------------------------------------------------------------------------------
-            Confirmación de Orden No. ${orden.noOrden}:
-    """.trimIndent()
-    )
-
-    orden.printListaProductos()
-    println("\nTotal a pagar: $${orden.calcularTotal()}")
-    println(
-        """
-            ------------------------------------------------------------------------------------------------------------------------
-    """.trimIndent()
-    )
-
-    var opc: Int
-
-    do {
-        println("1. Pagar")
-        println("2. Regresar")
-        print("Ingrese una opción: ")
-        try {
-//            opc = readlnOrNull()?.toInt() as Int
-            opc = readlnOrNull()?.toIntOrNull() ?: 0
-
-            when (opc) {
-                1 -> {
-                    orden.procesarOrden()
-                    println("Gracias por su compra!")
-                    return menuOrden()
-                }
-
-                2 -> println("Regresando a menu de ordenes")
-                else -> println("Opción no válida")
-            }
-        } catch (exception: NumberFormatException) {
-            opc = 0
-            println("Solo acepta valores del 1..2")
-        }
-    } while (opc != 2)
-
+    menuOrden()
 }
-
+//fun confirmarOrden2(orden: Orden) {
+//    if (orden.listaProducto.isEmpty()) {
+//        println("No se puede procesar compra porque aún no tiene productos agregados")
+//        return
+//    }
+//
+//    if (orden.statusOrden != Estados.PENDIENTE) {
+//        println("Esta orden ya fue procesada")
+//        return
+//    }
+//
+//    println(
+//        """
+//            ------------------------------------------------------------------------------------------------------------------------
+//            Confirmación de Orden No. ${orden.noOrden}:
+//    """.trimIndent()
+//    )
+//
+//    orden.printListaProductos()
+//    println("\nTotal a pagar: $${orden.calcularTotal()}")
+//    println(
+//        """
+//            ------------------------------------------------------------------------------------------------------------------------
+//    """.trimIndent()
+//    )
+//
+//    var opc: Int
+//
+//    do {
+//        println("1. Pagar")
+//        println("2. Regresar")
+//        print("Ingrese una opción: ")
+//        try {
+////            opc = readlnOrNull()?.toInt() as Int
+//            opc = readlnOrNull()?.toIntOrNull() ?: 0
+//
+//            when (opc) {
+//                1 -> {
+//                    orden.procesarOrden()
+//                    orden.ticketVenta()
+//                    println("Gracias por su compra!")
+//                    return menuOrden()
+//                }
+//
+//                2 -> println("Regresando a menu de ordenes")
+//                else -> println("Opción no válida")
+//            }
+//        } catch (exception: NumberFormatException) {
+//            opc = 0
+//            println("Solo acepta valores del 1..2")
+//        }
+//    } while (opc != 2)
+//
+//}
 
 fun main() {
     Inventario.agregarProductoInventario(
