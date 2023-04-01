@@ -143,8 +143,17 @@ class Orden(
                     it.get("precio"),it.get("total") )
                 print(formaProducto)
             }
+            println("____________________________________" +
+                    "______________________")
+            val textTotal = "Total"
+            val total = String.format("|%-44s$%.2f|\n",textTotal, calcularTotal())
+            print(total)
+            println("____________________________________" +
+                    "______________________")
 
 
+        }else{
+            println("Orden no procesada")
         }
 
     }
