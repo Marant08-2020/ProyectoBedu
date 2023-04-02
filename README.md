@@ -37,6 +37,11 @@ Para ello seguir las siguientes instruciones:
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.48.04.png)
 
+2. Apartado Modules-> + -> Library- Maven:
+![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.51.31.png)
+
+
+
 
 
 
