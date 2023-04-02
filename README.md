@@ -40,6 +40,16 @@ Para ello seguir las siguientes instruciones:
 2. Apartado Modules-> + -> Library- Maven:
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.51.31.png)
 
+3. Ingresar la libreria:org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4 
+
+![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.54.10.png)
+
+Dar en **OK** para confirmar la dependecia en las siguientes ventanas.
+
+## Menú de aplicación
+
+![]()
+
 
 
 
