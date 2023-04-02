@@ -1,6 +1,6 @@
 # Proyecto Bedu
 
-Este proyecto aplica los conocimientos adquiridos en el curso de Kotlin Fundamentals de cada una de las sesiones presentadas; dicho proyecto se denominado **TIENDA MOVIL** el cual tiene los siguientes objetivos especificos:
+Este proyecto aplica los conocimientos adquiridos en el curso de Kotlin Fundamentals de cada una de las sesiones; dicho proyecto se denominado **TIENDA MOVIL** el cual tiene los siguientes objetivos especificos:
 
 * Inicio de sesión.
 
