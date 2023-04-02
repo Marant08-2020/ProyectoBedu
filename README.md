@@ -72,7 +72,7 @@ Cualquier aclaración dirigirse con:
 
 Y la documentación :
 
-![Documento]https://docs.google.com/document/d/1tzFGSuMfJtjCxM_KBeBK6LljrxRJcmfgYRB52vkI34c/edit#
+![Documento](https://docs.google.com/document/d/1tzFGSuMfJtjCxM_KBeBK6LljrxRJcmfgYRB52vkI34c/edit#)
 
 
 
