@@ -52,7 +52,17 @@ de misma forma del paso 1 al 3.
 
 ## Menú de aplicación
 
-![]()
+Al compilar el el main() se observará en consola el siguiente menu:
+
+![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2021.31.24.png)
+
+Para pode ingresar a la aplicación usa el user de pruebas del demo:
+
+UserId: 1
+Cotraseña: password
+
+
+
 
 
 
