@@ -61,6 +61,21 @@ Para pode ingresar a la aplicación usa el user de pruebas del demo:
 UserId: 1
 Cotraseña: password
 
+## Acerca de
+
+Cualquier aclaración dirigirse con:
+
+* Alan Sandoval León (sandoval.leon.alan@gmail.com)
+* Luis Fernando Pedraza Estañol (luisfedranol@gmail.com)
+* Marco Antonio Mojica Martinez (mojicamarc@gmail.com)
+* Carlos Armando Morales Bautista (carloamoraleb@gmail.com)
+
+Y la documentación :
+
+![Documento]https://docs.google.com/document/d/1tzFGSuMfJtjCxM_KBeBK6LljrxRJcmfgYRB52vkI34c/edit#
+
+
+
 
 
 
