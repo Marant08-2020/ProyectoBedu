@@ -1,6 +1,6 @@
 # Proyecto Bedu
 
-Este proyecto tiene el objetivo aplicar los conocimientos de curso de Kotli Fundamentals denominado TIENDA MOVIL el cual tiene los siguientes objetivos especificos:
+Este proyecto tiene el objetivo aplicar los conocimientos de curso de Kotli Fundamentals denominado **TIENDA MOVIL** el cual tiene los siguientes objetivos especificos:
 
 * Inicio de sesión.
 
