@@ -19,9 +19,13 @@ Para ello seguir las siguientes instruciones:
 
 * Abrir el proyecto con el IDE: IntelliJ IDEA.
 
-* Dirigirse al archivo main de proyecto y ejecutarlo. En
+* Dirigirse al archivo main de proyecto y ejecutarlo.
 
-![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.27.07.png) 
+!(https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.27.07.png) 
+
+* Si sale la siguiente ventana:
+
+!()
 
 * Instalar la dependecia de corrutinas: org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4
 
