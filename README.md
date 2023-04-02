@@ -17,7 +17,9 @@ Para ello seguir las siguientes instruciones:
 
 * Clonar el repositorio: git clone https://github.com/Marant08-2020/ProyectoBedu.git
 
-* Abrir el proyecto con el IDE: IntelliJ IDEA  y usar el JDK JAVA 19; 
+* Abrir el proyecto con el IDE: IntelliJ IDEA.
+
+* Dirigirse al archivo main de proyecto y ejecutarlo. En
 
 * Instalar la dependecia de corrutinas: org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4
 
