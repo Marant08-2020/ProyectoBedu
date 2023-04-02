@@ -48,7 +48,8 @@ Para ello seguir las siguientes instruciones:
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.54.10.png)
 
-Dar en **OK** para confirmar la dependecia en las siguientes ventanas.
+Dar en **OK** para confirmar la dependecia en las siguientes ventanas y recordar instalar la  dependencia org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0
+de misma forma del paso 1 al 3.
 
 ## Menú de aplicación
 
