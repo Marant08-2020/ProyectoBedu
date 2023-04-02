@@ -1,6 +1,6 @@
 # Proyecto Bedu
 
-Este proyecto aplica los conocimientos adquiridos en el curso de Kotlin Fundamentals de cada una de las sesiones; dicho proyecto se denominado **TIENDA MOVIL** el cual tiene los siguientes objetivos especificos:
+Este proyecto aplica los conocimientos adquiridos en el curso de Kotlin Fundamentals de cada una de las sesiones; dicho proyecto se denominó **TIENDA MOVIL** el cual tiene los siguientes objetivos específicos:
 
 * Inicio de sesión.
 
@@ -18,11 +18,11 @@ Para ello seguir las siguientes instruciones:
 
 * Abrir el proyecto con el IDE: IntelliJ IDEA.
 
-* Dirigirse al archivo priincilao (main) de proyecto y ejecutarlo.
+* Dirigirse al archivo principal (main) del proyecto y ejecutarlo.
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.27.07.png) 
 
-* Si sale la siguiente ventana:
+* En caso de que aparezca la siguiente ventana:
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.41.44.png)
 
@@ -30,7 +30,7 @@ Para ello seguir las siguientes instruciones:
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.45.53.png)
 
-* Instalar las siguientes dependecias de Maeven:
+* Instalar las siguientes dependendencias de Maeven:
 
       * org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4
       
@@ -52,11 +52,11 @@ de misma forma del paso 1 al 3.
 
 ## Menú de aplicación
 
-Al compilar el el main() se observará en consola el siguiente menu:
+Al compilar el main() se observará en consola el siguiente menú:
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2021.31.24.png)
 
-Para pode ingresar a la aplicación usa el user de pruebas del demo:
+Para pode ingresar a la aplicación, se puede usar la siguiente cuenta preregistrada de usuario a manera de pruebas del demo:
 
 UserId: 1
 Cotraseña: password
