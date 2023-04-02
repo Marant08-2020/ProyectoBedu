@@ -1,15 +1,14 @@
 # Proyecto Bedu
 
-Este proyecto aplica los conocimientos adquiridos en el curso de Kotli Fundamentals de cada una de las sesiones presentadas; dicho proyecto se denominado **TIENDA MOVIL** el cual tiene los siguientes objetivos especificos:
+Este proyecto aplica los conocimientos adquiridos en el curso de Kotlin Fundamentals de cada una de las sesiones presentadas; dicho proyecto se denominado **TIENDA MOVIL** el cual tiene los siguientes objetivos especificos:
 
 * Inicio de sesión.
 
-* Registro de productos e invetario.
+* Registro de productos e inventario.
 
-* Registro de orden y procesar orden (calculo de total e impuestos).
+* Registro y procesamiento de órdenes (cálculo de total e impuestos).
 
-* E impresión de ticket de venta.
-
+* Impresión de ticket de venta.
 
 ## Instrucciones para clonar en un equipo local
 
@@ -19,7 +18,7 @@ Para ello seguir las siguientes instruciones:
 
 * Abrir el proyecto con el IDE: IntelliJ IDEA.
 
-* Dirigirse al archivo main de proyecto y ejecutarlo.
+* Dirigirse al archivo priincilao (main) de proyecto y ejecutarlo.
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.27.07.png) 
 
