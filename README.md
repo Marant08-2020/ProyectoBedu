@@ -30,7 +30,7 @@ Para ello seguir las siguientes instruciones:
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.45.53.png)
 
-* Y finalmente instalar las siguientes dependecias de Maeven:
+* Instalar las siguientes dependecias de Maeven:
 
       * org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4
       
