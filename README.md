@@ -13,6 +13,13 @@ Este proyecto aplica los conocimientos adquiridos en el curso de Kotli Fundament
 
 ## Instrucciones para bajar
 
+Para ello seguir las siguientes instruciones:
+
+* Clonar el repositorio: git clone https://github.com/Marant08-2020/ProyectoBedu.git
+
+* Abrir el proyecto con el IDE: IntelliJ IDEA  y usar el JDK JAVA 19; 
+
+* Instalar la dependecia de corrutinas: org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4
 
 
 
