@@ -11,7 +11,7 @@ Este proyecto aplica los conocimientos adquiridos en el curso de Kotli Fundament
 * E impresión de ticket de venta.
 
 
-## Instrucciones para bajar
+## Instrucciones para clonar en un equipo local
 
 Para ello seguir las siguientes instruciones:
 
