@@ -31,7 +31,13 @@ Para ello seguir las siguientes instruciones:
 
 ![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.45.53.png)
 
-* Instalar la dependecia de corrutinas: org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4
+* Y finalmente instalar la dependecia de corrutinas: org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4:
+
+1. Ir al menú Files->Project Structure:
+
+![](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.48.04.png)
+
+
 
 
 
