@@ -26,4 +26,4 @@ Para ello seguir las siguientes instruciones:
 
 
 
-https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.27.07.png
+[https://github.com/Marant08-2020/ProyectoBedu/blob/main/Screenshot%202023-04-01%20at%2019.27.07.png]
