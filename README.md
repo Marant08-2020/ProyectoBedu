@@ -70,7 +70,7 @@ Cualquier aclaración dirigirse con:
 * Marco Antonio Mojica Martinez (mojicamarc@gmail.com)
 * Carlos Armando Morales Bautista (carloamoraleb@gmail.com)
 
-[Documento](https://docs.google.com/document/d/1tzFGSuMfJtjCxM_KBeBK6LljrxRJcmfgYRB52vkI34c/edit#) del demo.
+[Documento](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Documentacion/Documentacio%CC%81n%20Proyecto%20Equipo%202.pdf) del demo.
 
 
 
