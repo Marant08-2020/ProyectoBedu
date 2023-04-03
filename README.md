@@ -72,6 +72,8 @@ Cualquier aclaración dirigirse con:
 
 [Documento](https://github.com/Marant08-2020/ProyectoBedu/blob/main/Documentacion/Documentacio%CC%81n%20Proyecto%20Equipo%202.pdf) del demo.
 
+[Video][https://drive.google.com/file/d/1I-UEvv4FfUpyPor6p3PjhTv2PxsMZzDs/view?usp=share_link] detalle de la aplicación.
+
 
 
 
